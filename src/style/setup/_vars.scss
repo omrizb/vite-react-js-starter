@@ -1,0 +1,14 @@
+// Color palette
+$clrPrimary: #212529;
+
+// Layout
+$layoutPadding: 20px;
+
+// Layout breakpoints
+$breakNarrow: 720px;
+$breakNormal: 1360px;
+$breakWide: 1920px;
+
+$contentBreakNarrow: $breakNarrow - $layoutPadding * 2;
+$contentBreakNormal: $breakNormal - $layoutPadding * 2;
+$contentBreakWide: $breakWide - $layoutPadding * 2;

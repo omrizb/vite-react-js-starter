@@ -1,0 +1,38 @@
+.wrapper {
+    --max-width: 980px;
+    --min-margin: 1em;
+
+    width: min(var(--max-width), 100% - 2 * var(--min-margin));
+    margin-inline: auto;
+}
+
+.main-layout {
+    display: grid;
+    grid-template-columns: $layoutPadding 1fr $layoutPadding;
+
+    >*.full {
+        grid-column: 1 / -1;
+    }
+
+    >*:not(.full) {
+        grid-column: 2;
+        display: grid;
+    }
+
+    @include narrow-layout {
+        @include layout-gtc($contentBreakNarrow);
+    }
+
+    @include normal-layout {
+        @include layout-gtc($contentBreakNormal);
+    }
+
+    @include wide-layout {
+        @include layout-gtc($contentBreakWide);
+    }
+}
+
+
+.main-text {
+    margin-bottom: 5rem;
+}

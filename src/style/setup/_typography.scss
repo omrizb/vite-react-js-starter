@@ -1,0 +1,40 @@
+/* Font Awesome */
+
+@font-face {
+    font-family: fa-brands;
+    src: url("../../fa-icons/fa-brands-400.ttf");
+}
+
+@font-face {
+    font-family: fa-regular;
+    src: url("../../fa-icons/fa-regular-400.ttf");
+}
+
+@font-face {
+    font-family: fa-solid;
+    src: url("../../fa-icons/fa-solid-900.ttf");
+}
+
+.fa-brands::before {
+    font-family: fa-brands;
+}
+
+.fa-regular::before {
+    font-family: fa-regular;
+}
+
+.fa-solid::before {
+    font-family: fa-solid;
+}
+
+// Example: Add fa icons
+// .fa-solid {
+//     .i-house::before {
+//         content: "\f015";
+//     }
+
+//     .i-lightbulb::before {
+//         content: "\f0eb";
+//     }
+// }
+    

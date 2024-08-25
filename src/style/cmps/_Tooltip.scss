@@ -1,0 +1,24 @@
+:root {
+    --tooltip-txt-color: #ffffff;
+    --tooltip-bgcolor: hsla(0,0%,100%,.1);
+    --tooltip-padding: 4px 12px;
+    --tooltip-font-size: 14px;
+}
+
+.tooltip-container {
+    position: relative;
+
+    .tooltip {
+        position: absolute;
+        border-radius: 4px;
+        padding: var(--tooltip-padding);
+        text-wrap: nowrap;
+        font-size: var(--tooltip-font-size);
+        font-weight: 300;
+        color: var(--tooltip-txt-color);
+        background-color: var(--tooltip-bgcolor);
+
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+}

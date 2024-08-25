@@ -1,0 +1,50 @@
+:root {
+    --slider-height: 4px;
+    --slider-non-active-bgcolor: #b3b3b3;
+    --slider-active-bgcolor: #ffffff;
+    --slider-active-bgcolor-highlighted: #1db954;
+    --slider-pointer-size: 12px;
+    --slider-pointer-bgcolor: #ffffff;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    min-width: 40px;
+   
+    .non-active-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--slider-height);
+        border-radius: 100vh;
+        background-color: var(--slider-non-active-bgcolor);
+    }
+
+    .active-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: var(--slider-height);
+        border-radius: 100vh;
+        background-color: var(--slider-active-bgcolor);
+    }
+
+    .pointer {
+        position: absolute;
+        top: calc(-1 * var(--slider-pointer-size)/2 + 1px);
+        left: 0;
+        width: var(--slider-pointer-size);
+        height: var(--slider-pointer-size);
+        border-radius: 100vh;
+        background-color: var(--slider-pointer-bgcolor);
+        cursor: pointer;
+    }
+
+    &:hover, &:active {
+        .active-bar {
+            background-color: var(--slider-active-bgcolor-highlighted);
+        }
+    }
+}

@@ -1,0 +1,23 @@
+:root {
+    --header-fixer-height: 64px;
+}
+
+.header-fixer {
+    position: relative;
+    
+
+    .background {
+        position: fixed;
+        width: 100%;
+        height: var(--header-fixer-height);
+        transition: opacity 0.4s ease;
+    }
+    
+    header {
+        position: fixed;
+        width: 100%;
+        height: var(--header-fixer-height);
+        transition: opacity 0.4s ease;
+    }
+
+}

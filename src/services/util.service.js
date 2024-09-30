@@ -5,10 +5,10 @@ export const utilService = {
     makeLorem,
     getRandomIntInclusive,
     getRandomItems,
-    getRandomColor,
     getTimeStr,
     getDayName,
     getMonthName,
+    breakArrayToCommas,
     animateCSS,
     rgbToHex,
     deepEqual,
@@ -59,15 +59,6 @@ function getRandomItems(items, size, singleItem = false, duplicationAllowed = fa
     return (singleItem) ? res[0] : res
 }
 
-function getRandomColor() {
-    const chars = '0123456789abcdef'
-    let color = '#'
-    for (let i = 0; i < 6; i++) {
-        color += chars[Math.floor(Math.random() * chars.length)]
-    }
-    return color
-}
-
 function getTimeStr(timeInSeconds) {
     const hours = Math.floor(timeInSeconds / 3600)
     const minutes = Math.floor((timeInSeconds % 3600) / 60)
@@ -96,6 +87,19 @@ function getMonthName(date) {
         'July', 'August', 'September', 'October', 'November', 'December'
     ]
     return monthNames[date.getMonth()]
+}
+
+function breakArrayToCommas(arr) {
+    return arr.reduce((acc, currValue, idx) => {
+        if (idx === 0) {
+            return currValue
+        }
+        if (idx !== arr.length - 1) {
+            return acc + `, ${currValue}`
+        } else {
+            return acc + `and ${currValue}`
+        }
+    }, '')
 }
 
 function animateCSS(el, animation = 'bounce') {

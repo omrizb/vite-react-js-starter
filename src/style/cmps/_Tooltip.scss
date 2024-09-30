@@ -6,19 +6,27 @@
 }
 
 .tooltip-container {
-    position: relative;
+    display: flex;
 
-    .tooltip {
-        position: absolute;
-        border-radius: 4px;
+    .tooltip-ref {
+        position: fixed;
+        max-width: 250px;
         padding: var(--tooltip-padding);
-        text-wrap: nowrap;
         font-size: var(--tooltip-font-size);
         font-weight: 300;
-        color: var(--tooltip-txt-color);
-        background-color: var(--tooltip-bgcolor);
-
-        opacity: 0;
-        transition: opacity 0.5s ease;
     }
+}
+
+.tooltip {
+    position: fixed;
+    max-width: 250px;
+    border-radius: 4px;
+    padding: var(--tooltip-padding);
+    font-size: var(--tooltip-font-size);
+    font-weight: 300;
+    color: var(--tooltip-txt-color);
+    background-color: var(--tooltip-bgcolor);
+
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }

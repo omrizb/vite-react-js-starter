@@ -1,11 +1,13 @@
 export const SHOW_MSG = 'show-msg'
+export const SHOW_TOOLTIP = 'show-tooltip'
+
 
 function createEventEmitter() {
     const listenersMap = {}
     return {
-        on(evName, listener){
-            listenersMap[evName] = (listenersMap[evName])? [...listenersMap[evName], listener] : [listener]
-            return ()=>{
+        on(evName, listener) {
+            listenersMap[evName] = (listenersMap[evName]) ? [...listenersMap[evName], listener] : [listener]
+            return () => {
                 listenersMap[evName] = listenersMap[evName].filter(func => func !== listener)
             }
         },
@@ -23,10 +25,14 @@ export function showUserMsg(msg) {
 }
 
 export function showSuccessMsg(txt) {
-    showUserMsg({txt, type: 'success'})
+    showUserMsg({ txt, type: 'success' })
 }
 export function showErrorMsg(txt) {
-    showUserMsg({txt, type: 'error'})
+    showUserMsg({ txt, type: 'error' })
 }
 
-window.showUserMsg = showUserMsg
+export function showTooltip(props) {
+    eventBusService.emit(SHOW_TOOLTIP, props)
+}
+
+// window.showUserMsg = showUserMsg

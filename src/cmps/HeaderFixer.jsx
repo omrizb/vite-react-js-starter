@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
-export function HeaderFixer({ header, className, bgColor, showFromY, children }) {
+export function HeaderFixer({ header, className, bgColor, showFromY = -1, children }) {
 
     // OPACITY_SCALE is the scroll distance after showFromY during which opacity grows from 0 to 1
-    const OPACITY_SCALE = 100
+    const OPACITY_SCALE = 80
 
     const { containerRef: scrollableContainerRef } = useOutletContext()
     const [width, setWidth] = useState(0)
@@ -17,6 +17,7 @@ export function HeaderFixer({ header, className, bgColor, showFromY, children })
         const resizeObserver = new ResizeObserver(updateWidth)
         resizeObserver.observe(scrollableContainerRef.current)
 
+        handleScroll()
         scrollableContainerRef.current.addEventListener('scroll', handleScroll)
 
         return () => {
@@ -32,7 +33,7 @@ export function HeaderFixer({ header, className, bgColor, showFromY, children })
 
     function handleScroll() {
         const scrollY = scrollableContainerRef.current.scrollTop
-        if (scrollY > showFromY) {
+        if (scrollY >= showFromY) {
             let newOpacity
             if (scrollY - showFromY < OPACITY_SCALE) {
                 newOpacity = (scrollY - showFromY) / OPACITY_SCALE
@@ -57,7 +58,7 @@ export function HeaderFixer({ header, className, bgColor, showFromY, children })
                     className={`background ${className}`}
                     style={{ ...style, backgroundColor: bgColor }}
                 ></div>
-                <header className={className} style={{ ...style }}>
+                <header className={className} style={{ ...style, opacity: (opacity) ? 1 : 0 }}>
                     {header}
                 </header>
             </div>

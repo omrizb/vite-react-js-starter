@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-export function Slider({ value = 50, min = 0, max = 100, onChange }) {
+export function Slider({ value = 50, min = 0, max = 100, setOnMouseup = false, onChange }) {
 
     const nonActiveBarRef = useRef(null)
     const pointerRef = useRef(null)
@@ -10,16 +10,22 @@ export function Slider({ value = 50, min = 0, max = 100, onChange }) {
     const [isDragging, setIsDragging] = useState(false)
 
     useEffect(() => {
-        if (nonActiveBarRef.current && pointerRef.current) {
-            const nonActiveBarWidth = nonActiveBarRef.current.offsetWidth
-            const pointerWidth = pointerRef.current.offsetWidth
-            setSliderWidth(nonActiveBarWidth - pointerWidth)
-        }
+        if (!nonActiveBarRef.current || !pointerRef.current) return
+
+        updateWidth()
+        const resizeObserver = new ResizeObserver(updateWidth)
+        resizeObserver.observe(nonActiveBarRef.current)
+
+        return () => resizeObserver.disconnect()
     }, [])
 
     useEffect(() => {
         onSetPointerOffset(sliderValue)
     }, [sliderWidth])
+
+    useEffect(() => {
+        if (!isDragging) setPointerOffset(value)
+    }, [value])
 
     useEffect(() => {
         if (isDragging) {
@@ -34,16 +40,27 @@ export function Slider({ value = 50, min = 0, max = 100, onChange }) {
     }, [isDragging])
 
     useEffect(() => {
-        if (onChange) onChange(sliderValue)
+        if (!onChange) return
+
+        if (!setOnMouseup) {
+            onChange(sliderValue)
+        }
     }, [sliderValue])
+
+    function updateWidth() {
+        const nonActiveBarWidth = nonActiveBarRef.current.offsetWidth
+        const pointerWidth = pointerRef.current.offsetWidth
+        setSliderWidth(nonActiveBarWidth - pointerWidth)
+    }
 
     function onSetPointerOffset(value) {
         const newOffset = sliderWidth * (value - min) / (max - min)
+
         if (newOffset > sliderWidth) {
             setSliderValue(max)
             setPointerOffset(sliderWidth)
         }
-        else if (newOffset < 0) {
+        else if (newOffset < 0 || isNaN(newOffset)) {
             setSliderValue(min)
             setPointerOffset(0)
         }
@@ -75,6 +92,12 @@ export function Slider({ value = 50, min = 0, max = 100, onChange }) {
     function handleMouseUp(ev) {
         ev.preventDefault()
         setIsDragging(false)
+        if (setOnMouseup) {
+            const finalValue = calcNewValue(ev)
+            onSetPointerOffset(finalValue)
+            setSliderValue(finalValue)
+            onChange(finalValue)
+        }
     }
 
     return (

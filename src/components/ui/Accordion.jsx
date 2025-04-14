@@ -3,12 +3,19 @@ import PropTypes from 'prop-types'
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
 import './Accordion.scss'
 
-export function Accordion({ items, className = '' }) {
-
-    const [activeIndex, setActiveIndex] = useState(null)
+export function Accordion({ items, className = '', singleOpen = false }) {
+    const [activeIndices, setActiveIndices] = useState([])
 
     const toggleAccordion = (index) => {
-        setActiveIndex(activeIndex === index ? null : index)
+        if (singleOpen) {
+            setActiveIndices(activeIndices.includes(index) ? [] : [index])
+        } else {
+            setActiveIndices(prev =>
+                prev.includes(index)
+                    ? prev.filter(i => i !== index)
+                    : [...prev, index]
+            )
+        }
     }
 
     return (
@@ -18,13 +25,13 @@ export function Accordion({ items, className = '' }) {
                     <button
                         className="accordion-header"
                         onClick={() => toggleAccordion(index)}
-                        aria-expanded={activeIndex === index}
+                        aria-expanded={activeIndices.includes(index)}
                     >
                         <span>{item.title}</span>
-                        {activeIndex === index ? <FaChevronUp /> : <FaChevronDown />}
+                        {activeIndices.includes(index) ? <FaChevronUp /> : <FaChevronDown />}
                     </button>
                     <div
-                        className={`accordion-content ${activeIndex === index ? 'active' : ''}`}
+                        className={`accordion-content ${activeIndices.includes(index) ? 'active' : ''}`}
                     >
                         {item.content}
                     </div>
@@ -42,4 +49,5 @@ Accordion.propTypes = {
         })
     ).isRequired,
     className: PropTypes.string,
+    singleOpen: PropTypes.bool,
 } 

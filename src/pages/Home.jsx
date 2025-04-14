@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { Accordion } from '../components/ui/Accordion'
 import { Carousel } from '../components/ui/Carousel'
 
-import { env } from '../config/env'
 import './Home.scss'
 
 

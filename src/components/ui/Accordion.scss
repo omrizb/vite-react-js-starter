@@ -1,67 +1,67 @@
 @import '../../style/_theme.scss';
 
 // Component-specific variables
-$accordion-border-color: $clr-gray-200;
-$accordion-header-bg: $clr-gray-50;
-$accordion-header-hover-bg: $clr-gray-100;
 $accordion-text-color: $clr-gray-800;
 $accordion-icon-color: $clr-gray-500;
-$accordion-border-radius: $radius-md;
 $accordion-padding: $spacing-4;
-$accordion-transition: $transition-normal;
+$accordion-transition-button: 0.2s ease-in-out;
+$accordion-transition-expand: 0.2s cubic-bezier(1, 0, 1, 0);
+$accordion-transition-collapse: 0.5s cubic-bezier(0, 1, 0, 1);
 
 .accordion {
     width: 100%;
-    border: 1px solid $accordion-border-color;
-    border-radius: $accordion-border-radius;
-    overflow: hidden;
 
     .accordion-item {
-        border-bottom: 1px solid $accordion-border-color;
-
-        &:last-child {
-            border-bottom: none;
+        &:not(:last-child) {
+            margin-bottom: $spacing-2;
         }
     }
 
     .accordion-header {
         width: 100%;
-        padding: $spacing-4;
+        padding: $accordion-padding;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: $accordion-header-bg;
+        background: none;
         border: none;
         cursor: pointer;
-        transition: background-color $transition-normal;
+        transition: color $accordion-transition-button;
 
         &:hover {
-            background-color: $accordion-header-hover-bg;
+            color: $clr-primary;
         }
 
         span {
             font-weight: $font-weight-medium;
             color: $accordion-text-color;
+            text-align: left;
         }
 
         svg {
             color: $accordion-icon-color;
-            transition: transform $transition-normal;
+            transition: transform $accordion-transition-button;
+            flex-shrink: 0;
         }
     }
 
     .accordion-content {
         max-height: 0;
         overflow: hidden;
-        transition: max-height $transition-slow;
-        background-color: $clr-white;
+        padding: 0 $accordion-padding;
+        transition: all $accordion-transition-collapse;
 
         &.active {
-            max-height: 1000px; // Adjust based on your needs
+            height: auto;
+            max-height: 1000px;
+            padding-bottom: $accordion-padding;
+            transition: all $accordion-transition-expand;
         }
 
         > div {
-            padding: $spacing-4;
+            overflow: hidden;
+            color: $clr-gray-600;
+            line-height: 1.6;
         }
     }
 } 

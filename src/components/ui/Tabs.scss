@@ -1,0 +1,74 @@
+@import '../../style/_theme.scss';
+
+// Component-specific variables
+$tabs-border-color: $clr-gray-200;
+$tabs-text-color: $clr-gray-500;
+$tabs-text-active-color: $clr-gray-800;
+$tabs-indicator-color: $clr-primary;
+$tabs-padding: $spacing-3 $spacing-6;
+$tabs-transition: $transition-normal;
+$tabs-animation: $transition-slow;
+
+.tabs {
+  width: 100%;
+
+  .tabs-header {
+    display: flex;
+    border-bottom: 1px solid $tabs-border-color;
+    margin-bottom: $spacing-4;
+  }
+
+  .tab-button {
+    padding: $tabs-padding;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: $font-weight-medium;
+    color: $tabs-text-color;
+    position: relative;
+    transition: color $tabs-transition;
+
+    &:hover {
+      color: $tabs-text-active-color;
+    }
+
+    &.active {
+      color: $tabs-text-active-color;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: $tabs-indicator-color;
+      }
+    }
+  }
+
+  .tabs-content {
+    position: relative;
+  }
+
+  .tab-panel {
+    display: none;
+    padding: $spacing-4 0;
+
+    &.active {
+      display: block;
+      animation: fadeIn $tabs-animation;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 

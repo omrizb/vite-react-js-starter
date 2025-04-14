@@ -1,0 +1,67 @@
+@import '../../style/_theme.scss';
+
+// Component-specific variables
+$accordion-border-color: $clr-gray-200;
+$accordion-header-bg: $clr-gray-50;
+$accordion-header-hover-bg: $clr-gray-100;
+$accordion-text-color: $clr-gray-800;
+$accordion-icon-color: $clr-gray-500;
+$accordion-border-radius: $radius-md;
+$accordion-padding: $spacing-4;
+$accordion-transition: $transition-normal;
+
+.accordion {
+    width: 100%;
+    border: 1px solid $accordion-border-color;
+    border-radius: $accordion-border-radius;
+    overflow: hidden;
+
+    .accordion-item {
+        border-bottom: 1px solid $accordion-border-color;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    .accordion-header {
+        width: 100%;
+        padding: $spacing-4;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $accordion-header-bg;
+        border: none;
+        cursor: pointer;
+        transition: background-color $transition-normal;
+
+        &:hover {
+            background-color: $accordion-header-hover-bg;
+        }
+
+        span {
+            font-weight: $font-weight-medium;
+            color: $accordion-text-color;
+        }
+
+        svg {
+            color: $accordion-icon-color;
+            transition: transform $transition-normal;
+        }
+    }
+
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height $transition-slow;
+        background-color: $clr-white;
+
+        &.active {
+            max-height: 1000px; // Adjust based on your needs
+        }
+
+        > div {
+            padding: $spacing-4;
+        }
+    }
+} 

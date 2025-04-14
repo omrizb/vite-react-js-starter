@@ -3,8 +3,7 @@ import { Provider } from 'react-redux'
 import { store } from './store/store.js'
 import { Home } from './pages/Home.jsx'
 
-// import './style/main.scss'
-import './App.css'
+import './style/main.scss'
 
 export function App() {
     return (

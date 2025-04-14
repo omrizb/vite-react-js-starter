@@ -1,0 +1,36 @@
+@import '../../style/_theme.scss';
+
+// Component-specific variables
+$tooltip-text-color: $clr-white;
+$tooltip-bg-color: rgba($clr-white, 0.1);
+$tooltip-padding: $spacing-1 $spacing-3;
+$tooltip-font-size: $font-size-sm;
+$tooltip-border-radius: $radius-sm;
+$tooltip-max-width: 250px;
+$tooltip-transition: $transition-slower;
+
+.tooltip-container {
+    display: flex;
+
+    .tooltip-ref {
+        position: fixed;
+        max-width: $tooltip-max-width;
+        padding: $tooltip-padding;
+        font-size: $tooltip-font-size;
+        font-weight: $font-weight-normal;
+    }
+}
+
+.tooltip {
+    position: fixed;
+    max-width: $tooltip-max-width;
+    border-radius: $tooltip-border-radius;
+    padding: $tooltip-padding;
+    font-size: $tooltip-font-size;
+    font-weight: $font-weight-normal;
+    color: $tooltip-text-color;
+    background-color: $tooltip-bg-color;
+    opacity: 0;
+    transition: opacity $tooltip-transition;
+    z-index: $z-index-tooltip;
+} 

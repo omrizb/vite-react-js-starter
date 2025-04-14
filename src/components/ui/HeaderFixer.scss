@@ -1,0 +1,23 @@
+@import '../../style/_theme.scss';
+
+// Component-specific variables
+$header-fixer-height: 64px;
+$header-fixer-transition: $transition-slower;
+
+.header-fixer {
+    position: relative;
+
+    .background {
+        position: fixed;
+        width: 100%;
+        height: $header-fixer-height;
+        transition: opacity $header-fixer-transition;
+    }
+    
+    header {
+        position: fixed;
+        width: 100%;
+        height: $header-fixer-height;
+        transition: opacity $header-fixer-transition;
+    }
+} 

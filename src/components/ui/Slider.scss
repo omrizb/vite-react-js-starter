@@ -1,0 +1,55 @@
+@import '../../style/_theme.scss';
+
+// Component-specific variables
+$slider-height: 4px;
+$slider-non-active-bg: $clr-gray-400;
+$slider-active-bg: $clr-white;
+$slider-active-bg-highlight: $clr-primary;
+$slider-pointer-size: 12px;
+$slider-pointer-bg: $clr-white;
+$slider-min-width: 40px;
+$slider-border-radius: $radius-full;
+$slider-transition: $transition-normal;
+
+.slider {
+    position: relative;
+    width: 100%;
+    min-width: $slider-min-width;
+    height: $slider-pointer-size;
+
+    & > * {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+   
+    .non-active-bar {
+        width: 100%;
+        height: $slider-height;
+        border-radius: $slider-border-radius;
+        background-color: $slider-non-active-bg;
+    }
+
+    .active-bar {
+        height: $slider-height;
+        border-radius: $slider-border-radius;
+        background-color: $slider-active-bg;
+        transition: background-color $slider-transition;
+    }
+
+    .pointer {
+        position: absolute;
+        width: $slider-pointer-size;
+        height: $slider-pointer-size;
+        border-radius: $slider-border-radius;
+        background-color: $slider-pointer-bg;
+        cursor: pointer;
+    }
+
+    &:hover, &:active {
+        .active-bar {
+            background-color: $slider-active-bg-highlight;
+        }
+    }
+} 

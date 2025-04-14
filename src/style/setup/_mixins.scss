@@ -1,32 +1,34 @@
+@import '../_theme.scss';
+
 /* Media queries Breakpoint mixins */
 
 @mixin mobile-layout {
-    @media (max-width: $breakNarrow) {
+    @media (max-width: $break-narrow) {
         @content;
     }
 }
   
 @mixin narrow-layout {
-    @media (min-width: $breakNarrow) {
+    @media (min-width: $break-narrow) {
         @content;
     }
 }
   
 @mixin normal-layout {
-    @media (min-width: $breakNormal) {
+    @media (min-width: $break-normal) {
         @content;
     }
 }
   
 @mixin wide-layout {
-    @media (min-width: $breakWide) {
+    @media (min-width: $break-wide) {
         @content;
     }
 }
   
 @mixin layout-gtc($max) {
     grid-template-columns:
-        minmax($layoutPadding, 1fr) minmax(auto, $max) minmax($layoutPadding, 1fr);
+        minmax($layout-padding, 1fr) minmax(auto, $max) minmax($layout-padding, 1fr);
 }
   
 /* Media  Mixins */
@@ -57,7 +59,7 @@
     }
 }
   
-  // Mixin for removing hover effects on iphone screen
+// Mixin for removing hover effects on iphone screen
 @mixin hover-supported {
     @media not all and (pointer: coarse) {
         &:hover {
@@ -68,21 +70,21 @@
   
 // Buttons
   
-@mixin btn($type: regular, $bg: $clr1, $clr: $clr3, $padding: em(24px) em(44px), $hover: darken($bg, 8%)) {
+@mixin btn($type: regular, $bg: $clr-primary, $clr: $clr-white, $padding: $spacing-6 $spacing-8, $hover: $clr-primary-dark) {
     display: inline-flex;
     align-items: center;
     text-decoration: none;
     text-transform: uppercase;
     padding: $padding;
-    line-height: 1.25;
-    font-size: em(14px);
-    font-variation-settings: "wght" 430;
+    line-height: $line-height-normal;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
     border: none;
     cursor: pointer;
   
-    transition: background-color 0.2s;
+    transition: background-color $transition-normal;
   
-    @if $type ==regular {
+    @if $type == regular {
         background-color: $bg;
         color: $clr;
     
@@ -91,28 +93,28 @@
         }
     }
   
-    @else if $type ==dark {
-      background-color: $clr2;
-      color: $clr3;
+    @else if $type == dark {
+        background-color: $clr-gray-800;
+        color: $clr-white;
   
         &:hover {
-            background-color: $clr1;
-            color: $clr3;
+            background-color: $clr-primary;
+            color: $clr-white;
         }
     }
   
-    @else if $type ==light {
-      background-color: $clr3;
-      color: $clr2;
+    @else if $type == light {
+        background-color: $clr-white;
+        color: $clr-primary;
   
         &:hover {
-            background-color: $clr1;
-            color: $clr3;
+            background-color: $clr-gray-100;
+            color: $clr-primary;
         }
     }
 }
   
-  // Type
+// Type
   
 @mixin type($type: bold) {
 

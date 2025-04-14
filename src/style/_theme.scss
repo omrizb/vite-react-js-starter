@@ -1,0 +1,99 @@
+// Color palette
+$clr-primary: #212529;
+$clr-primary-dark: darken($clr-primary, 10%);
+$clr-primary-light: lighten($clr-primary, 10%);
+
+// Gray scale
+$clr-gray-50: #f9fafb;
+$clr-gray-100: #f3f4f6;
+$clr-gray-200: #e5e7eb;
+$clr-gray-300: #d1d5db;
+$clr-gray-400: #9ca3af;
+$clr-gray-500: #6b7280;
+$clr-gray-600: #4b5563;
+$clr-gray-700: #374151;
+$clr-gray-800: #1f2937;
+$clr-gray-900: #111827;
+
+// Basic colors
+$clr-white: #ffffff;
+$clr-black: #000000;
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+// Border Radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-full: 9999px;
+
+// Spacing
+$spacing-1: 0.25rem;
+$spacing-2: 0.5rem;
+$spacing-3: 0.75rem;
+$spacing-4: 1rem;
+$spacing-5: 1.25rem;
+$spacing-6: 1.5rem;
+$spacing-8: 2rem;
+$spacing-10: 2.5rem;
+$spacing-12: 3rem;
+
+// Layout
+$layout-padding: 20px;
+
+// Transitions
+$transition-fast: 0.15s ease;
+$transition-normal: 0.2s ease;
+$transition-slow: 0.3s ease;
+$transition-slower: 0.5s ease;
+
+// Z-index
+$z-index-dropdown: 10;
+$z-index-modal: 20;
+$z-index-toast: 30;
+$z-index-tooltip: 40;
+
+// Layout breakpoints
+$break-narrow: 720px;
+$break-normal: 1360px;
+$break-wide: 1920px;
+
+$content-break-narrow: $break-narrow - $layout-padding * 2;
+$content-break-normal: $break-normal - $layout-padding * 2;
+$content-break-wide: $break-wide - $layout-padding * 2;
+
+// Additional breakpoints
+$break-sm: $break-narrow;
+$break-md: 768px;
+$break-lg: 1024px;
+$break-xl: $break-normal;
+$break-2xl: $break-wide;
+
+// Typography
+$font-family-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+$font-size-xs: 0.75rem;    // 12px
+$font-size-sm: 0.875rem;   // 14px
+$font-size-base: 1rem;     // 16px
+$font-size-lg: 1.4rem;     // 22.4px
+$font-size-xl: 1.8rem;     // 28.8px
+$font-size-2xl: 2.5rem;    // 40px
+$font-size-3xl: 3.5rem;    // 56px
+$font-size-4xl: 5rem;      // 80px
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Line heights
+$line-height-none: 1;
+$line-height-tight: 1.25;
+$line-height-snug: 1.375;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.625;
+$line-height-loose: 2; 

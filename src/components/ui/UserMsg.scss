@@ -1,0 +1,67 @@
+@import '../../style/_theme.scss';
+
+// Component-specific variables
+$user-msg-success-bg: $clr-gray-900;
+$user-msg-success-text: $clr-gray-50;
+$user-msg-error-bg: $clr-gray-900;
+$user-msg-error-text: $clr-gray-50;
+$user-msg-button-text: $clr-gray-50;
+$user-msg-button-hover-bg: rgba($clr-black, 0.2);
+$user-msg-border-radius: $radius-md;
+$user-msg-shadow: $shadow-md;
+$user-msg-padding: $spacing-6;
+$user-msg-font-size: $font-size-lg;
+$user-msg-min-width: 350px;
+$user-msg-bottom: 10%;
+$user-msg-left: 15%;
+$user-msg-z-index: $z-index-toast;
+
+.user-msg {
+    position: fixed;
+    bottom: $user-msg-bottom;
+    left: $user-msg-left;
+    display: flex;
+    justify-content: space-between;
+    min-width: $user-msg-min-width;
+    padding: $user-msg-padding;
+    border-radius: $user-msg-border-radius;
+    font-size: $user-msg-font-size;
+    box-shadow: $user-msg-shadow;
+    z-index: $user-msg-z-index;
+
+    p {
+        margin: 0;
+    }
+}
+
+.success {
+    border: 1px solid $user-msg-success-bg;
+    background-color: $user-msg-success-bg;
+    color: $user-msg-success-text;
+}
+
+.error {
+    border: 1px solid $user-msg-error-bg;
+    background-color: $user-msg-error-bg;
+    color: $user-msg-error-text;
+}
+
+.user-msg .btn {
+    border: 1px solid transparent;
+    border-radius: $radius-sm;
+    width: fit-content;
+    height: fit-content;
+    padding: $spacing-2 $spacing-4;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    word-spacing: 0.3em;
+    letter-spacing: 0.1em;
+    color: $user-msg-button-text;
+    background: transparent;
+    cursor: pointer;
+    transition: background-color $transition-normal;
+
+    &:hover {
+        background-color: $user-msg-button-hover-bg;
+    }
+} 

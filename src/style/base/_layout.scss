@@ -1,6 +1,6 @@
 .wrapper {
     --max-width: 980px;
-    --min-margin: 1em;
+    --min-margin: $spacing-4;
 
     width: min(var(--max-width), 100% - 2 * var(--min-margin));
     margin-inline: auto;
@@ -8,7 +8,7 @@
 
 .main-layout {
     display: grid;
-    grid-template-columns: $layoutPadding 1fr $layoutPadding;
+    grid-template-columns: $layout-padding 1fr $layout-padding;
 
     >*.full {
         grid-column: 1 / -1;
@@ -20,19 +20,18 @@
     }
 
     @include narrow-layout {
-        @include layout-gtc($contentBreakNarrow);
+        @include layout-gtc($content-break-narrow);
     }
 
     @include normal-layout {
-        @include layout-gtc($contentBreakNormal);
+        @include layout-gtc($content-break-normal);
     }
 
     @include wide-layout {
-        @include layout-gtc($contentBreakWide);
+        @include layout-gtc($content-break-wide);
     }
 }
 
-
 .main-text {
-    margin-bottom: 5rem;
+    margin-bottom: $spacing-12;
 }

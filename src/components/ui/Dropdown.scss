@@ -1,0 +1,86 @@
+@import '../../style/_theme.scss';
+
+// Component-specific variables
+$dropdown-bg: $clr-white;
+$dropdown-border-color: $clr-gray-200;
+$dropdown-shadow: $shadow-md;
+$dropdown-hover-bg: $clr-gray-100;
+$dropdown-border-radius: $radius-md;
+$dropdown-padding: $spacing-2;
+$dropdown-gap: $spacing-2;
+$dropdown-icon-size: 16px;
+$dropdown-min-width: 200px;
+$dropdown-margin: $spacing-2;
+$dropdown-transition: $transition-normal;
+$dropdown-animation: $transition-normal;
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+  .dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: $dropdown-gap;
+    cursor: pointer;
+    padding: $dropdown-padding;
+    border-radius: $dropdown-border-radius;
+    transition: background-color $dropdown-transition;
+
+    &:hover {
+      background-color: $dropdown-hover-bg;
+    }
+
+    .dropdown-icon {
+      transition: transform $dropdown-transition;
+      width: $dropdown-icon-size;
+      height: $dropdown-icon-size;
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .dropdown-content {
+    position: absolute;
+    background-color: $dropdown-bg;
+    border: 1px solid $dropdown-border-color;
+    border-radius: $dropdown-border-radius;
+    box-shadow: $dropdown-shadow;
+    min-width: $dropdown-min-width;
+    z-index: $z-index-dropdown;
+    animation: fadeIn $dropdown-animation;
+
+    &.top {
+      bottom: 100%;
+      margin-bottom: $dropdown-margin;
+    }
+
+    &.bottom {
+      top: 100%;
+      margin-top: $dropdown-margin;
+    }
+
+    &.left {
+      right: 100%;
+      margin-right: $dropdown-margin;
+    }
+
+    &.right {
+      left: 100%;
+      margin-left: $dropdown-margin;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 

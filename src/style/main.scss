@@ -4,12 +4,9 @@
 /* Setup */
 @import "setup/functions";
 @import "setup/mixins";
-@import "setup/vars.scss";
 @import "setup/typography.scss";
 
 /* Base */
 @import "base/reset.scss";
 @import "base/helpers.scss";
 @import "base/layout.scss";
-
-/* Components */

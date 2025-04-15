@@ -5,56 +5,52 @@ import { Carousel } from '../components/ui/Carousel'
 
 import './Home.scss'
 
-
-
 export function Home() {
-
     const [activeAccordion, setActiveAccordion] = useState(0)
 
     const accordionItems = [
         {
             title: 'What is this starter kit?',
-            content: 'This is a modern React starter kit built with Vite, featuring a collection of reusable UI components. It includes components like Accordion, Carousel, and more, all styled with SCSS and following best practices.'
+            content:
+                'This is a modern React starter kit built with Vite, featuring a collection of reusable UI components. It includes components like Accordion, Carousel, and more, all styled with SCSS and following best practices.'
         },
         {
             title: 'How to use the components?',
-            content: 'Each component is designed to be easily customizable through props and SCSS variables. You can import them directly from the components/ui directory and use them in your pages.'
+            content:
+                'Each component is designed to be easily customizable through props and SCSS variables. You can import them directly from the components/ui directory and use them in your pages.'
         },
         {
             title: 'Customization options',
-            content: 'The components use a theme system with variables defined in _theme.scss. You can customize colors, spacing, typography, and more by modifying these variables.'
+            content:
+                'The components use a theme system with variables defined in _theme.scss. You can customize colors, spacing, typography, and more by modifying these variables.'
         }
     ]
 
     const carouselItems = [
-        <div className="carousel-slide-content">
-            <img src="https://picsum.photos/800/400?random=1" alt="Modern UI Components" />
-            <div className="slide-text">
-                <h3>Modern UI Components</h3>
-                <p>A collection of reusable, customizable components</p>
-            </div>
-        </div>,
-        <div className="carousel-slide-content">
-            <img src="https://picsum.photos/800/400?random=2" alt="SCSS Styling" />
-            <div className="slide-text">
-                <h3>SCSS Styling</h3>
-                <p>Clean and maintainable styles with SCSS</p>
-            </div>
-        </div>,
-        <div className="carousel-slide-content">
-            <img src="https://picsum.photos/800/400?random=3" alt="Responsive Design" />
-            <div className="slide-text">
-                <h3>Responsive Design</h3>
-                <p>Components that work on all screen sizes</p>
-            </div>
-        </div>
+        {
+            image: 'https://picsum.photos/800/400?random=1',
+            title: 'Modern UI Components',
+            description: 'A collection of reusable, customizable components'
+        },
+        {
+            image: 'https://picsum.photos/800/400?random=2',
+            title: 'SCSS Styling',
+            description: 'Clean and maintainable styles with SCSS'
+        },
+        {
+            image: 'https://picsum.photos/800/400?random=3',
+            title: 'Responsive Design',
+            description: 'Components that work on all screen sizes'
+        }
     ]
 
     return (
         <div className="home">
             <section className="hero">
                 <h1>React UI Components Starter</h1>
-                <p className="subtitle">A collection of modern, reusable UI components built with React and SCSS</p>
+                <p className="subtitle">
+                    A collection of modern, reusable UI components built with React and SCSS
+                </p>
             </section>
 
             <section className="showcase">
